@@ -10,13 +10,13 @@ public class ClusterMonitor implements Watcher {
     private static final String CONNECT_STRING =
             System.getenv("ZK_CONNECTION") != null
                     ? System.getenv("ZK_CONNECTION")
-                    : "BlerinaNode:2181,ElisaNode:2181,XhesildaNode:2181,XhoanaNode:2181";
+                    : "Blerina1:2181,Blerina2:2181,Blerina3:2181,Blerina4:2181";
 
     private static final int SESSION_TIMEOUT = 60000;
     private final CountDownLatch connectedLatch = new CountDownLatch(1);
 
     private static final String[] NODES = {
-            "BlerinaNode", "ElisaNode", "XhesildaNode", "XhoanaNode"
+            "Blerina1","Blerina2", "Blerina3", "Blerina4"
     };
 
     public void connect() throws Exception {
