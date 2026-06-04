@@ -7,7 +7,7 @@ import java.util.concurrent.CountDownLatch;
 public class Main {
 
     private static final String ZK_CONNECTION =
-            System.getenv().getOrDefault("ZK_CONNECTION", "BlerinaNode:2181");
+            System.getenv().getOrDefault("ZK_CONNECTION", "Blerina1:2181");
 
     public static void main(String[] args) throws Exception {
 
@@ -23,7 +23,7 @@ public class Main {
             executor.submit(() -> {
                 CuratorDistributedLock lock = null;
                 try {
-                    lock = new CuratorDistributedLock(ZK_CONNECTION, "/xhesi-lock");
+                    lock = new CuratorDistributedLock(ZK_CONNECTION, "/bleri-lock");
                     lock.acquire();
 
                     System.out.println("Thread-" + id + " po punon...");

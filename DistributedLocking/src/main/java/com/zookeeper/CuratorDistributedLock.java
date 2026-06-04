@@ -23,7 +23,7 @@ public class CuratorDistributedLock implements DistributedLock {
         client.start();
 
         try {
-            client.blockUntilConnected(); // 🔥 IMPORTANT për Docker
+            client.blockUntilConnected(); 
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -33,9 +33,9 @@ public class CuratorDistributedLock implements DistributedLock {
 
     @Override
     public void acquire() throws Exception {
-        System.out.println(Thread.currentThread().getName() + " po pret lock-un...");
+        System.out.println(Thread.currentThread().getName() + " waiting for lock...");
         mutex.acquire();
-        System.out.println(Thread.currentThread().getName() + " mori lock-un!");
+        System.out.println(Thread.currentThread().getName() + " got lock!");
     }
 
     public boolean tryAcquire(long timeout, TimeUnit unit) throws Exception {
@@ -46,7 +46,7 @@ public class CuratorDistributedLock implements DistributedLock {
     public void release() throws Exception {
         if (mutex.isAcquiredInThisProcess()) {
             mutex.release();
-            System.out.println(Thread.currentThread().getName() + " liroi lock-un.");
+            System.out.println(Thread.currentThread().getName() + " left lock-un.");
         }
     }
 
